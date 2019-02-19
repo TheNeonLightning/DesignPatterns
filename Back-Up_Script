@@ -1,0 +1,21 @@
+#!/bin/bash
+exec 2> /dev/null #перенаправляем поток ошибок от вывода
+cd $HOME
+mkdir $1 #каталог по первому входному аргументу
+for var in $@
+do
+if [ $1 != $var ] #первый аргумент не тип, а название католога
+then
+if [ $2 != $var ] #первый аргумент не тип, а название архива
+then
+adress_list=$(find . -name "*.$var") #адреса всех подходящих фаилов
+for adress in $adress_list
+do
+cp --backup=numbered $adress $1 #скрывает уже существующие фаилы с одинаковым названием
+done
+fi
+fi
+done
+tar -cf "$2".tar $1
+echo "done"
+
