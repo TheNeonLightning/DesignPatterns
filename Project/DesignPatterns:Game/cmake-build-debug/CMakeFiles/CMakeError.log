@@ -1,0 +1,26 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c69a3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c69a3.dir/build.make CMakeFiles/cmTC_c69a3.dir/build
+make[1]: вход в каталог «/home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp»
+CMakeFiles/cmTC_c69a3.dir/build.make:64: *** образец цели не содержит «%».  Останов.
+make[1]: выход из каталога «/home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp»
+Makefile:121: recipe for target 'cmTC_c69a3/fast' failed
+make: *** [cmTC_c69a3/fast] Error 2
+
+
+
+Detecting CXX [-std=c++1z] compiler features failed to compile with the following output:
+Change Dir: /home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3ec12/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ec12.dir/build.make CMakeFiles/cmTC_3ec12.dir/build
+make[1]: вход в каталог «/home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp»
+CMakeFiles/cmTC_3ec12.dir/build.make:64: *** образец цели не содержит «%».  Останов.
+make[1]: выход из каталога «/home/theneonlightning/Project/DesignPatterns:Game/cmake-build-debug/CMakeFiles/CMakeTmp»
+Makefile:121: recipe for target 'cmTC_3ec12/fast' failed
+make: *** [cmTC_3ec12/fast] Error 2
+
+
+

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/theneonlightning/Project/untitled6/UnitFactory.h
+
+/home/theneonlightning/Project/untitled6/Units.h
+UnitFactory.h
+/home/theneonlightning/Project/untitled6/UnitFactory.h
+
+/home/theneonlightning/Project/untitled6/main.cpp
+iostream
+-
+memory
+-
+Units.h
+/home/theneonlightning/Project/untitled6/Units.h
+

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/theneonlightning/Project/untitled2/main.cpp
+iostream
+-
+vector
+-
+queue
+-
+set
+-
+unordered_map
+-
+cmath
+-
+
