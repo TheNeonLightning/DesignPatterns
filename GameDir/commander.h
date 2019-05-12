@@ -1,11 +1,30 @@
 // В этом header'е лежат классы связанные с реализацие командиров: командир Aeon (AeonCommander), командир Cybran
 // (CybranCommander), singleton для хранения командира Aeon (Aeon), singleton для хранения командира Cybran (Cybran)
 
+class Army;
+
+class Commander: public Unit {
+public:
+
+    size_t spawning_points = 10;
+
+    virtual SiegeTank* ProduceTank() = 0;
+
+    virtual AssaultBot* ProduceBot() = 0;
+
+    virtual void GetCost(size_t& tank, size_t& bot) = 0;
+
+    Army* army;
+
+};
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class AeonCommander {
+class AeonCommander: public Commander {
 
     friend class Commanders_Fixture;
+
+    friend class GameManager;
 
 protected:
 
@@ -19,14 +38,33 @@ protected:
 
     size_t health = 100;
 
-    size_t spawning_points = 10; // на создание юнитов
 
 
 public:
 
-    void attack(SiegeTank* enemy);
+    void attack(Unit* enemy);
 
-    void attack(AssaultBot* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    bool under_attack(size_t value) {
+        health -= value;
+        if (health <= 0) {
+            destroyed = true;
+            return true;
+        }
+        return false;
+    }
+
+    size_t health_value() {
+        return health;
+    }
+
+    void GetCost(size_t& tank, size_t& bot) {
+        tank = tank_cost;
+        bot = bot_cost;
+    }
 
     SiegeTank* ProduceTank();
 
@@ -38,9 +76,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class CybranCommander {
+class CybranCommander: public Commander {
 
     friend class Commanders_Fixture;
+
+    friend class GameManager;
 
 protected:
 
@@ -54,13 +94,31 @@ protected:
 
     size_t health = 100;
 
-    size_t spawning_points = 10;
-
 public:
 
-    void attack(SiegeTank* enemy);
+    void attack(Unit* enemy);
 
-    void attack(AssaultBot* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    bool under_attack(size_t value) {
+        health -= value;
+        if (health <= 0) {
+            destroyed = true;
+            return true;
+        }
+        return false;
+    }
+
+    size_t health_value() {
+        return health;
+    }
+
+    void GetCost(size_t& tank, size_t& bot) {
+        tank = tank_cost;
+        bot = bot_cost;
+    }
 
     SiegeTank* ProduceTank();
 

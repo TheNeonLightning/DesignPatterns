@@ -1,9 +1,35 @@
 // В этом header'е лежат фабричные классы для реализации AbstractFactory, а также классы юнитов
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////New1////////////////////////////////////////////////////////////
 
 class SiegeTank;
 
 class AssaultBot;
+
+class Unit {
+
+public:
+
+    bool destroyed = false;
+
+    virtual size_t health_value() {
+        return 0;
+    }
+
+    virtual size_t damage_value() {
+        return 0;
+    }
+
+    virtual void attack(Unit* enemy) {
+
+    }
+
+    virtual bool under_attack(size_t damage) {
+        return false;
+    }
+
+};
 
 /////////////////////////////////////////////AbstractFactory////////////////////////////////////////////////////////////
 
@@ -39,7 +65,7 @@ public:
 };
 
 //////////////////////////////////////UnitInterface/////////////////////////////////////////////////////////////////////
-class AssaultBot { // абстрактный интерфейс bot
+class AssaultBot: public Unit { // абстрактный интерфейс bot
 protected:
 
     virtual void veterancy_check() = 0; // проверка количесвта убийств (вызывается в ходе каждой атаки, при достижении
@@ -47,9 +73,11 @@ protected:
 
 public:
 
-    virtual void attack(AssaultBot* enemy) = 0;
+    virtual size_t health_value() = 0;
 
-    virtual void attack(SiegeTank* enemy) = 0;
+    virtual size_t damage_value() = 0;
+
+    virtual void attack(Unit* enemy) = 0;
 
     virtual bool under_attack(size_t damage) = 0; // вызывается в случае, если данный юнит атакован, возвращает true,
     // если юнит был уничтожен
@@ -58,12 +86,14 @@ public:
 
 };
 
-class SiegeTank { // абстрактный интерфейс tank
+class SiegeTank: public Unit { // абстрактный интерфейс tank
 public:
 
-    virtual void attack(AssaultBot* enemy) = 0;
+    virtual size_t health_value() = 0;
 
-    virtual void attack(SiegeTank* enemy) = 0;
+    virtual size_t damage_value() = 0;
+
+    virtual void attack(Unit* enemy) = 0;
 
     virtual bool under_attack(size_t damage) = 0;
 
@@ -90,9 +120,15 @@ protected:
 
 public:
 
-    void attack(AssaultBot* enemy);
+    size_t health_value() {
+        return health;
+    }
 
-    void attack(SiegeTank* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    void attack(Unit* enemy);
 
     bool under_attack(size_t damage);
 
@@ -117,9 +153,15 @@ protected:
 
 public:
 
-    void attack(AssaultBot* enemy);
+    size_t health_value() {
+        return health;
+    }
 
-    void attack(SiegeTank* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    void attack(Unit* enemy);
 
     bool under_attack(size_t damage);
 
@@ -142,9 +184,15 @@ protected:
 
 public:
 
-    void attack(AssaultBot* enemy);
+    size_t health_value() {
+        return health;
+    }
 
-    void attack(SiegeTank* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    void attack(Unit* enemy);
 
     virtual bool under_attack(size_t damage);
 
@@ -166,9 +214,15 @@ protected:
 
 public:
 
-    void attack(AssaultBot* enemy);
+    size_t health_value() {
+        return health;
+    }
 
-    void attack(SiegeTank* enemy);
+    size_t damage_value() {
+        return damage;
+    }
+
+    void attack(Unit* enemy);
 
     virtual bool under_attack(size_t damage);
 

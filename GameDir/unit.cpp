@@ -16,23 +16,15 @@ AssaultBot* CybranUnitFactory::create_bot() {
     return new CybranAssaultBot();
 }
 
+//////////////////////////////////////////Units/////////////////////////////////////////////////////////////////////////
+
 void AeonAssaultBot::veterancy_check() {
     if (kill_count % 4 == 0) {
         health += 2;
     }
 }
 
-//////////////////////////////////////////Units/////////////////////////////////////////////////////////////////////////
-
-void AeonAssaultBot::attack(AssaultBot* enemy) {
-    bool flag = enemy->under_attack(damage);
-    if (flag) {
-        kill_count += 1;
-        veterancy_check();
-    }
-}
-
-void AeonAssaultBot::attack(SiegeTank* enemy) {
+void AeonAssaultBot::attack(Unit* enemy) {
     bool flag = enemy->under_attack(damage);
     if (flag) {
         kill_count += 1;
@@ -43,6 +35,7 @@ void AeonAssaultBot::attack(SiegeTank* enemy) {
 bool AeonAssaultBot::under_attack(size_t damage) {
     health = health - damage;
     if (health <= 0) {
+        destroyed = true;
         return true;
     }
     return false;
@@ -58,15 +51,7 @@ void CybranAssaultBot::veterancy_check() {
     }
 }
 
-void CybranAssaultBot::attack(AssaultBot* enemy) {
-    bool flag = enemy->under_attack(damage);
-    if (flag) {
-        kill_count += 1;
-        veterancy_check();
-    }
-}
-
-void CybranAssaultBot::attack(SiegeTank* enemy) {
+void CybranAssaultBot::attack(Unit* enemy) {
     bool flag = enemy->under_attack(damage);
     if (flag) {
         kill_count += 1;
@@ -77,6 +62,7 @@ void CybranAssaultBot::attack(SiegeTank* enemy) {
 bool CybranAssaultBot::under_attack(size_t damage) {
     health = health - damage;
     if (health <= 0) {
+        destroyed = true;
         return true;
     }
     return false;
@@ -86,17 +72,14 @@ CybranAssaultBot::~CybranAssaultBot() {};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void AeonSiegeTank::attack(SiegeTank* enemy) {
-    enemy->under_attack(damage);
-}
-
-void AeonSiegeTank::attack(AssaultBot* enemy) {
+void AeonSiegeTank::attack(Unit* enemy) {
     enemy->under_attack(damage);
 }
 
 bool AeonSiegeTank::under_attack(size_t damage) {
     health -= damage;
     if (health <= 0) {
+        destroyed = true;
         return true;
     }
     return false;
@@ -106,17 +89,14 @@ AeonSiegeTank::~AeonSiegeTank() {};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void CybranSiegeTank::attack(SiegeTank* enemy) {
-    enemy->under_attack(damage);
-}
-
-void CybranSiegeTank::attack(AssaultBot* enemy) {
+void CybranSiegeTank::attack(Unit* enemy) {
     enemy->under_attack(damage);
 }
 
 bool CybranSiegeTank::under_attack(size_t damage) {
     health -= damage;
     if (health <= 0) {
+        destroyed = true;
         return true;
     }
     return false;

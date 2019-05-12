@@ -1,10 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void AeonCommander::attack(SiegeTank* enemy) {
-    enemy->under_attack(damage);
-}
-
-void AeonCommander::attack(AssaultBot* enemy) {
+void AeonCommander::attack(Unit* enemy) {
     enemy->under_attack(damage);
 }
 
@@ -22,11 +18,7 @@ AeonCommander::~AeonCommander() {}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void CybranCommander::attack(SiegeTank* enemy) {
-    enemy->under_attack(damage);
-}
-
-void CybranCommander::attack(AssaultBot* enemy) {
+void CybranCommander::attack(Unit* enemy) {
     enemy->under_attack(damage);
 }
 

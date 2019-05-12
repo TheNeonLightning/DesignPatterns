@@ -4,6 +4,7 @@
 #include "unit.cpp"
 #include "commander.h"
 #include "commander.cpp"
+#include "composite_and_iterator.cpp"
 #include <gtest/gtest.h>
 
 
