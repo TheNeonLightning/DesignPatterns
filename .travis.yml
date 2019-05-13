@@ -1,3 +1,8 @@
-language: C++
-C++:
+language: cpp
+cpp:
 -"stable"
+notifications:
+on_success:always
+on_failure:always
+email:
+-theneonlightning@yandex.ru
